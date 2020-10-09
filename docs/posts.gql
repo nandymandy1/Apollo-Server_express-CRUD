@@ -1,0 +1,59 @@
+query GET_ALL_POSTS {
+  getAllPosts {
+    id
+    title
+    content
+    featuredImage
+    createdAt
+    updatedAt
+  }
+}
+
+query POST_BY_ID($id: ID!) {
+  getPostById(id:$id) {
+    id
+    title
+    content
+    updatedAt
+    createdAt
+    featuredImage
+  }
+}
+
+
+mutation CREATE_NEW_POST(
+  $title: String!
+  $content: String!
+  $featuredImage: String
+) {
+  createNewPost(
+    newPost: { 
+        title: $title, 
+        content: $content, 
+        featuredImage: $featuredImage 
+    }
+  ) {
+    title
+    content
+    featuredImage
+  }
+}
+
+mutation EDIT_POST_BY_ID($id: ID!, $updatedPost: PostInput!) {
+  editPostByID(updatedPost: $updatedPost, id: $id) {
+    id
+    title
+    content
+    featuredImage
+    updatedAt
+    createdAt
+  }
+}
+
+mutation DELETE_POST_BY_ID($id: ID!){
+  deletePostById(id:$id){
+    id
+    message
+    success
+  }
+}

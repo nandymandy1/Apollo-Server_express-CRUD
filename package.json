@@ -1,0 +1,29 @@
+{
+  "name": "apollo-post-crud",
+  "version": "1.0.0",
+  "description": "This is simple apollo graph QL server using express js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r esm .",
+    "dev": "nodemon -r esm"
+  },
+  "keywords": [],
+  "author": "Narendra Maurya",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-express": "^2.17.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "consola": "^2.15.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "graphql": "^15.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.20",
+    "mongoose": "^5.10.5",
+    "mongoose-paginate-v2": "^1.3.9",
+    "yup": "^0.29.3"
+  }
+}

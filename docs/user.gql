@@ -1,0 +1,59 @@
+mutation REGISTER_NEW_USER(
+    $email: String!
+    $lastName: String!
+    $username: String!
+    $password: String!
+    $firstName: String!
+    $avatarImage: String
+) {
+  registerUser(
+    newUser: {
+      email: $email
+      username: $username
+      lastName: $lastName
+      password: $password
+      firstName: $firstName 
+      avatarImage: $avatarImage
+    }
+  ) {
+    token
+    user {
+      id
+      email
+      lastName
+      username
+      firstName
+      avatarImage
+      avatarImage
+    }
+  }
+}
+
+query AUTHENTICATE_USER(
+    $username: String!
+    $password: String!
+){
+  authenticateUser(
+      username: $username
+      password: $password
+){
+    user{
+      id
+      username
+      avatarImage
+      email
+      lastName
+      firstName
+    }
+    token
+  }
+}
+
+
+query GET_AUTHENTICATED_USER_PROFILE{
+  authUserProfile{
+    id
+    firstName
+    lastName
+  }
+}
