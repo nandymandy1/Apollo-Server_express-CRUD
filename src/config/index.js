@@ -1,17 +1,13 @@
-import {
-    config
-} from 'dotenv';
+import { config } from "dotenv";
 
-const {
-    parsed
-} = config();
+const { parsed } = config();
 
 export const {
-    PORT,
-    MODE,
-    SECRET,
-    BASE_URL,
-    IN_PROD = MODE !== 'prod',
-    URL = `${BASE_URL}${PORT}`,
-    DB,
-} = parsed
+  DB,
+  MODE,
+  SECRET,
+  BASE_URL,
+  IN_PROD = MODE !== "prod",
+  URL = `${BASE_URL}${PORT}`,
+  PORT = MODE !== "prod" ? PORT : process.env.PORT,
+} = parsed;
