@@ -24,6 +24,7 @@ const server = new ApolloServer({
   resolvers,
   schemaDirectives,
   playground: true,
+  introspection: true,
   context: ({ req }) => {
     let { isAuth, user } = req;
     return {
@@ -52,7 +53,6 @@ const startApp = async () => {
     server.applyMiddleware({
       app,
       cors: false,
-      introspection: true,
     });
 
     // App listener will go here
