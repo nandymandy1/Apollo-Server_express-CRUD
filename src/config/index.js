@@ -8,6 +8,6 @@ export const {
   SECRET,
   BASE_URL,
   IN_PROD = MODE !== "prod",
-  URL = `${BASE_URL}${PORT}`,
+  URL = `${BASE_URL}`,
   PORT = MODE !== "prod" ? PORT : process.env.PORT,
 } = parsed;
