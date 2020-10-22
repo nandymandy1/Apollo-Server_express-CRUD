@@ -30,7 +30,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   schemaDirectives,
-  playground: IN_PROD,
+  playground: true,
   context: ({ req }) => {
     let { isAuth, user } = req;
 
