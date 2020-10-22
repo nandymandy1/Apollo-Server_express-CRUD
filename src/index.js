@@ -1,26 +1,19 @@
-import { error, success } from "consola";
-
-import { join } from "path";
-
 import cors from "cors";
-
-import { ApolloServer } from "apollo-server-express";
-
+import { join } from "path";
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import * as AppModels from "./models";
-
+import { error, success } from "consola";
 import { DB, PORT, IN_PROD } from "./config";
-
-import { typeDefs, resolvers } from "./graphql";
-
-import { schemaDirectives } from "./graphql/directives";
-
 import AuthMiddleware from "./middlewares/auth";
+import { typeDefs, resolvers } from "./graphql";
+import { ApolloServer } from "apollo-server-express";
+import { schemaDirectives } from "./graphql/directives";
 
 // Initialize the Express Application
 const app = express();
+
 app.use(cors());
 app.use(AuthMiddleware);
 app.use(bodyParser.json());
@@ -33,7 +26,6 @@ const server = new ApolloServer({
   playground: true,
   context: ({ req }) => {
     let { isAuth, user } = req;
-
     return {
       req,
       isAuth,
@@ -50,15 +42,20 @@ const startApp = async () => {
       useFindAndModify: false,
       useUnifiedTopology: true,
     });
+
     success({
       badge: true,
       message: `Successfully connected with the Database.`,
     });
+
     // Inject Apollo server middleware on Express Application
     server.applyMiddleware({
       app,
       cors: false,
+      introspection: true,
     });
+
+    // App listener will go here
     app.listen(PORT, () =>
       success({
         badge: true,
